@@ -1,12 +1,13 @@
 import psycopg2
+import os
 
 conn_details = {
-    "host": "aws-0-eu-central-1.pooler.supabase.com",
-    "database": "postgres",
-    "user": "postgres.hxxxbazgluuhyeghlpvt",
-    "password": "Vedmastarendb",
-    "port": '6543'
-} 
+    "host": os.getenv("DATABASE_HOST", "postgres"),
+    "database": os.getenv("DATABASE_NAME", "postgres"),
+    "user": os.getenv("DATABASE_USER", "postgres"),
+    "password": os.getenv("DATABASE_PASSWORD", "Mydatabase1391"),
+    "port": os.getenv("DATABASE_PORT", "5432")
+}
 
 def admin_change_price(activity, price):
     try:
